@@ -1,0 +1,19 @@
+<head>
+  <title></title>
+</head>
+<body>
+<div>
+  <h1>Movies</h1>
+    <ol>
+    {% for movie in movies %}
+      <li>
+        <div>
+          <h5>{{movie.title.value | raw}} </h5>
+          <img src="{{ file_url(movie.field_image.entity.fileuri) }}" width="400" height="400" />
+          <p>{{movie.field_description.value | raw}}</p>
+        </div>
+      </li>
+    {% endfor %}
+    </ol>
+</div>
+</body>
