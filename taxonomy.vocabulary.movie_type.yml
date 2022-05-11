@@ -1,0 +1,8 @@
+uuid: 45bb7288-d4ba-4768-9fe8-635a739ef4ab
+langcode: en
+status: true
+dependencies: {  }
+name: 'Movie type'
+vid: movie_type
+description: 'All kind of genres that we have in movie indrustries'
+weight: 0
