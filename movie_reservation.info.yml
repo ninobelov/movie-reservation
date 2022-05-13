@@ -3,3 +3,5 @@ description: Welcome to our movie reservation page
 type: module
 core_version_requirement: ^9
 package: Custom Modules
+libraries:
+  - movie_reservation/movie_reservation
