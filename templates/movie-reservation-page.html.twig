@@ -22,10 +22,10 @@
           <h4>{{movie.title.value}}</h4>
           <img alt="{{movie.title.value}}" src="{{ file_url(movie.field_image.entity.fileuri) }}" width="350" height="350" />
           <p>{{movie.field_description.value | raw}}</p><br>
-          <a href="#modal-{{movie.nid.value}}" class="reserve">Reserve movie</a>
+          <a href="#movie-modal-{{movie.nid.value}}" class="reserve">Reserve movie</a>
         </div>
       </li>
-          <div id="modal-{{movie.nid.value}}" class="modal">
+          <div id="movie-modal-{{movie.nid.value}}" class="movie-modal">
             <div class="content">
               <h3>{{movie.title.value}}</h3>
               <h6>Select day:</h6>
