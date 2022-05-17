@@ -1,10 +1,10 @@
 function movieGenreChange(){
-$("#genre").on("change", function () {
+$("#movie_genre").on("change", function () {
     $.ajax({
-      url: "./movie_reservation?movie_type=" +$("#genre").val(),
+      url: "./movie_reservation?movie_type=" +$("#movie_genre").val(),
       type: "GET",
       success: function () {
-        window.location.href = "./movie_reservation?movie_type=" + $("#genre").val();
+        window.location.href = "./movie_reservation?movie_type=" + $("#movie_genre").val();
       }
     });
   })

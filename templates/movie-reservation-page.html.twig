@@ -6,11 +6,11 @@
 </head>
 <body>
 <label>Please select movie genre for which you would like to make a reservation: </label>
-<select id="genre">
+<select id="movie_genre">
   <option value="">Select genre:</option>
   <option value="0">All movies</option>
-  {% for genre in genres %}
-    <option value = "{{genre.tid.value}}">{{genre.name.value}}</option>
+  {% for movie_genre in genres %}
+    <option value = "{{movie_genre.tid.value}}">{{movie_genre.name.value}}</option>
   {% endfor %}
 </select>
   <h1>Movies</h1>
