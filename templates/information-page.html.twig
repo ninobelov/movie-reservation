@@ -1,0 +1,45 @@
+{{ attach_library('movie_reservation/movie_reservation') }}
+<head>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+  </script>
+</head>
+<body>
+<label>Please select movie genre for which you would like to make a reservation: </label>
+<select id="genre">
+  <option value="">Select genre:</option>
+  <option value="0">All movies</option>
+  {% for genre in genres %}
+    <option value = "{{genre.tid.value}}">{{genre.name.value}}</option>
+  {% endfor %}
+</select>
+  <h1>Movies</h1>
+    <ol>
+      {% if movies is not empty  %}
+        {% for movie in movies %}
+      <li>
+        <div>
+          <h4>{{movie.title.value}}</h4>
+          <img alt="{{movie.title.value}}" src="{{ file_url(movie.field_image.entity.fileuri) }}" width="350" height="350" />
+          <p>{{movie.field_description.value | raw}}</p><br>
+          <a href="#modal-{{movie.nid.value}}" class="reserve">Reserve movie</a>
+        </div>
+      </li>
+          <div id="modal-{{movie.nid.value}}" class="modal">
+            <div class="content">
+              <h3>{{movie.title.value}}</h3>
+              <h6>Select day:</h6>
+              {% for day in movie.field_days %}
+                <input  type="radio" value="{{day.value}}">
+                <p>{{day.value}} it's available.</p>
+              {% endfor %}
+              <a href="#" class="close">&times;</a>
+              <br><button type="submit" >Confirm your movie reservation</button>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <strong>Sorry, we do not have movies with selected genre yet!</strong>
+      {% endif %}
+    </ol>
+</body>
