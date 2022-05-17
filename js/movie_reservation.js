@@ -1,4 +1,4 @@
-function movietype(){
+function movieGenreChange(){
 $("#genre").on("change", function () {
     $.ajax({
       url: "./movie_reservation?movie_type=" +$("#genre").val(),
@@ -10,5 +10,5 @@ $("#genre").on("change", function () {
   })
   }
 
-  movietype();
+  movieGenreChange();
 
