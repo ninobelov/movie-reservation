@@ -12,8 +12,8 @@ $("#movie_genre").on("change", function () {
 
 function nameValidationReq() {
   $(".btn-submit").click(function(){
-    let name = $('#customer_name').val();
-    let nameVal = /^[A-Z][a-z]+$/;
+    const name = $('#customer_name').val();
+    const nameVal = /^[A-Z][a-z]+$/;
     if (nameVal.test(name)) {
       alert("Good, thank you!");
     } else {
