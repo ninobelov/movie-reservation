@@ -10,5 +10,16 @@ $("#movie_genre").on("change", function () {
   })
   }
 
+function nameValidationReq() {
+  $(".btn-submit").click(function(){
+    const name = $('#customer_name').val();
+    const nameVal = /^[A-Z][a-z]+$/;
+    if (nameVal.test(name)) {
+      alert("Good, thank you!");
+    } else {
+      alert("Error! Please use first capital letter and don't use numbers in the name section, thank you!");
+    }
+  })
+}
+  nameValidationReq();
   movieGenreChange();
-

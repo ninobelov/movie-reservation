@@ -1,5 +1,5 @@
-.reserve:link,.reserve:visited {
-  background-color: palevioletred;
+.btn:link,.btn:visited {
+  background-color: #ff6347;
   color: white;
   padding: 15px 25px;
   text-align: center;
@@ -7,11 +7,13 @@
   display: inline-block;
 }
 
-.reserve:hover,.reserve:active {
-  background-color: indianred;
+.btn:hover,.btn:active {
+  background-color: black;
+  color: white !important;
+  transition: 0.6s !important;
 }
 
-.movie-modal{
+.modal-movie{
   display: none;
   position: fixed;
   text-align: center;
@@ -26,11 +28,16 @@
   background-color: rgba(0,0,0,0.4);
 }
 
-.movie-modal:target {
+.modal-movie:target {
   display:block;
 }
 
-.content{
+.modal-header{
+  padding: 3px 20px;
+  background-color: #f6c8c7;
+}
+
+.modal-content{
   text-align: center;
   background-color: #fefefe;
   margin: auto;
