@@ -1,0 +1,48 @@
+uuid: 1f009358-489b-45c4-928d-302a6ec06bf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.movie.field_description
+    - field.field.node.movie.field_image
+    - field.field.node.movie.field_movie_type
+    - node.type.movie
+  module:
+    - image
+    - text
+    - user
+id: node.movie.default
+targetEntityType: node
+bundle: movie
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_movie_type:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
