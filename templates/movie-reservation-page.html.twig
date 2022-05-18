@@ -1,0 +1,57 @@
+{{ attach_library('movie_reservation/movie_reservation') }}
+<head>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  <label>Hello,please enter your name: </label>
+    <input type="text" id="customer_name" name="customer_name" title="Please use only letters" autocomplete="off" maxlength="10" required>
+    <input class="btn-submit" type="submit" value="SUBMIT"><br><br>
+  <label>Please select movie genre for which you would like to make a reservation: </label>
+<select id="movie_genre">
+  <option value="">Select genre:</option>
+  <option value="0">All movies</option>
+  {% for movie_genre in genres %}
+    <option value = "{{movie_genre.tid.value}}">{{movie_genre.name.value}}</option>
+  {% endfor %}
+</select>
+  <h1>Movies</h1>
+    <ol>
+      {% if movies is not empty  %}
+        {% for movie in movies %}
+      <li>
+        <div>
+          <h4>{{movie.title.value}}</h4>
+          <img alt="{{movie.title.value}}" src="{{ file_url(movie.field_image.entity.fileuri) }}" width="350" height="350"><br>
+          <p>{{movie.field_description.value | raw}}</p><br>
+          <a href="#modal-movie-{{movie.nid.value}}" class="btn" id="myBtn" >Reserve movie</a>
+        </div>
+      </li>
+          <div id="modal-movie-{{movie.nid.value}}" class="modal-movie">
+            <div class="modal-content">
+              <div class="modal-header">
+                <a href="#" class="close">&times;</a>
+                <h2>Here you can make a reservation</h2>
+              </div>
+              <div class="modal-body">
+              <h3>{{movie.title.value}}</h3>
+              <h6>Select day:</h6>
+              {% for day in movie.field_days %}
+                {% set movieAttendants = movie.field_attendants %}
+                <input  type="radio" name="days" value="{{day.value}}">
+                <p>{{day.value}} it's available for: {{movieAttendants.value}}.</p>
+              {% endfor %}
+                <div class="modal-footer">
+              <br><button type="submit" class="btn btn-default" id="confirmBtn">Confirm your movie reservation</button>
+                </div>
+               </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <strong>Sorry, we do not have movies with selected genre yet!</strong>
+      {% endif %}
+    </ol>
+</body>
