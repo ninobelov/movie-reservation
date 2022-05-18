@@ -1,7 +1,7 @@
 <?php
   function movie_reservation_theme($existing,$type,$theme,$path) {
     return array(
-      'information_page'=>array(
+      'movie_reservation_page'=>array(
         'variables'=>array('movies'=>array(),'genres' => array())
       )
     );

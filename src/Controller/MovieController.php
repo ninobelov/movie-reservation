@@ -29,7 +29,7 @@
 
       return array(
         '#title'=>'Movie reservation',
-        '#theme'=>'information_page',
+        '#theme'=>'movie_reservation_page',
         '#movies'=>$movies,
         '#genres'=>$genres
       );
