@@ -1,7 +1,7 @@
 function movieGenreChange(){
 $("#movie_genre").on("change", function () {
     $.ajax({
-      url: "http://localhost/drupalprojekat/movie_reservation?movie_type=" +$("#movie_genre").val(),
+      url: "./movie_reservation?movie_type=" +$("#movie_genre").val(),
       type: "GET",
       success: function () {
         window.location.href = "./movie_reservation?movie_type=" + $("#movie_genre").val();
@@ -24,7 +24,7 @@ function valueValidationReq() {
     if (nameVal.test(name)){
 
       $.ajax({
-        url: "http://localhost/drupalprojekat/save_reservation?save_reservation",
+        url: "./save_reservation?save_reservation",
         type: "POST",
         data: {
           title: title,
