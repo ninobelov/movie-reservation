@@ -44,6 +44,5 @@ function nameValidationReq() {
     }
   })
 }
-
   nameValidationReq();
   movieGenreChange();

@@ -18,12 +18,12 @@
         ->getStorage('taxonomy_term')
         ->loadByProperties(['vid' => 'movie_type']);
 
-      $id = Drupal::request()->query->get('movie_type');
+      $id = Drupal::request()->query->get('movie_type') ;
 
       $query = Drupal::entityQuery('node')
-        ->condition('type', 'movie');
+       ->condition('type', 'movie');
 
-      if (!empty($id)) {
+      if(!empty($id)) {
         $query->condition('field_movie_type', $id);
       }
 
