@@ -10,7 +10,7 @@ $("#movie_genre").on("change", function () {
   })
   }
 
-function nameValidationReq() {
+function valueValidationReq() {
   $("#movieForm").on("submit",function (event) {
 
     event.preventDefault();
@@ -44,5 +44,5 @@ function nameValidationReq() {
     }
   })
 }
-  nameValidationReq();
+  valueValidationReq();
   movieGenreChange();
