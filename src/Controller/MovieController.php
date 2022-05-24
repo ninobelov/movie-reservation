@@ -8,9 +8,11 @@
   use Symfony\Component\HttpFoundation;
 
 
-  class MovieController {
+  class MovieController
+  {
 
-    public function moviePage(){
+    public function moviePage()
+    {
 
       $genres = Drupal::entityTypeManager()
         ->getStorage('taxonomy_term')
@@ -28,10 +30,38 @@
       $movies = Node::loadMultiple($query->execute());
 
       return array(
-        '#title'=>'Movie reservation',
-        '#theme'=>'movie_reservation_page',
-        '#movies'=>$movies,
-        '#genres'=>$genres
+        '#title' => 'Movie reservation',
+        '#theme' => 'movie_reservation_page',
+        '#movies' => $movies,
+        '#genres' => $genres
       );
     }
+
+    public function saveMovieReservation(){
+
+      $save_reservation = Drupal::request()->query->get('save_reservation');
+
+      if (isset($save_reservation)) {
+        $db = Drupal::database();
+
+        $title = Drupal::request()->get('title');
+        $day = Drupal::request()->get('day');
+        $genre = Drupal::request()->get('genre');
+        $name = Drupal::request()->get('name');
+        $date = date('Y-m-d H:i:s');
+
+        $info = $db->insert('reservations');
+        $info->fields([
+          'day_of_reservation' => $day,
+          'time_of_reservation' => $date,
+          'reserved_movie_name' => $title,
+          'reserved_movie_genre' => $genre,
+          'customer_name' => $name
+        ]);
+        $info->execute();
+
+      }
+      return array();
+    }
   }
+

@@ -7,8 +7,7 @@
 </head>
 <body>
   <label>Hello,please enter your name: </label>
-    <input type="text" id="customer_name" name="customer_name" title="Please use only letters" autocomplete="off" maxlength="10" required>
-    <input class="btn-submit" type="submit" value="SUBMIT"><br><br>
+    <input type="text" id="customer_name" name="customer_name" title="Please use only letters" autocomplete="off" maxlength="10" required><br><br>
   <label>Please select movie genre for which you would like to make a reservation: </label>
 <select id="movie_genre">
   <option value="">Select genre:</option>
@@ -36,19 +35,24 @@
                 <h2>Here you can make a reservation</h2>
               </div>
               <div class="modal-body">
-              <h3>{{movie.title.value}}</h3>
-              <h6>Select day:</h6>
-              {% for day in movie.field_days %}
-                {% set movieAttendants = movie.field_attendants %}
-                <input  type="radio" name="days" value="{{day.value}}">
-                <p>{{day.value}} it's available for: {{movieAttendants.value}}.</p>
-              {% endfor %}
-                <div class="modal-footer">
-              <br><button type="submit" class="btn btn-default" id="confirmBtn">Confirm your movie reservation</button>
+                <form id="movieForm">
+                  <h3 class="movieTitle" id="title-{{movie.nid.value}}">{{movie.title.value}}</h3>
+                  {% for genre in movie.field_movie_type %}
+                    <input class="movieGenre" name="genre" value="{{genre.entity.name.value}}" style="text-align: center"readonly>
+                  {% endfor %}
+                  <h6>Select day:</h6>
+                {% for day in movie.field_days %}
+                  {% set movieAttendants = movie.field_attendants %}
+                    <input  type="radio" name="days" value="{{day.value}}">
+                    <p>{{day.value}} it's available for: {{movieAttendants.value}}.</p>
+                {% endfor %}
+                    <div class="modal-footer">
+                <br><button type="submit" class="btn btn-default" id="confirmBtn">Confirm your movie reservation</button>
+                    </div>
+                  </form>
                 </div>
                </div>
             </div>
-          </div>
         {% endfor %}
       {% else %}
         <strong>Sorry, we do not have movies with selected genre yet!</strong>

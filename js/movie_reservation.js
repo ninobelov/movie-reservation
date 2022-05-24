@@ -10,16 +10,39 @@ $("#movie_genre").on("change", function () {
   })
   }
 
-function nameValidationReq() {
-  $(".btn-submit").click(function(){
+function valueValidationReq() {
+  $("#movieForm").on("submit",function (event) {
+
+    event.preventDefault();
+
+    const title = $(".movieTitle", this).text();
+    const day = $("input[type=radio]:checked").val();
+    const genre = $(".movieGenre",this).val();
     const name = $('#customer_name').val();
     const nameVal = /^[A-Z][a-z]+$/;
-    if (nameVal.test(name)) {
-      alert("Good, thank you!");
+
+    if (nameVal.test(name)){
+
+      $.ajax({
+        url: "./save_reservation?save_reservation",
+        type: "POST",
+        data: {
+          title: title,
+          day: day,
+          genre: genre,
+          name: name
+        },
+        success: function (){
+          alert("You reserved the movie!");
+        },
+        error:function (){
+          alert("Error!")
+        }
+    })
     } else {
       alert("Error! Please use first capital letter and don't use numbers in the name section, thank you!");
     }
   })
 }
-  nameValidationReq();
+  valueValidationReq();
   movieGenreChange();
