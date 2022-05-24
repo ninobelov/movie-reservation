@@ -7,10 +7,10 @@ movie_reservation.moviePage:
   requirements:
     _permission: 'access content'
 
-movie_reservation.savePage:
+movie_reservation.sendReservation:
   path: '/save_reservation'
   defaults:
-    _controller: '\Drupal\movie_reservation\Controller\MovieController::savePage'
+    _controller: '\Drupal\movie_reservation\Controller\MovieController::sendReservation'
     _title: 'Save reservation'
   methods: [POST]
   requirements:

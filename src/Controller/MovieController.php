@@ -37,7 +37,7 @@
       );
     }
 
-    public function savePage(){
+    public function sendReservation(){
 
       $save_reservation = Drupal::request()->query->get('save_reservation');
 
