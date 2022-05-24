@@ -37,7 +37,7 @@
       );
     }
 
-    public function sendReservation(){
+    public function saveMovieReservation(){
 
       $save_reservation = Drupal::request()->query->get('save_reservation');
 
